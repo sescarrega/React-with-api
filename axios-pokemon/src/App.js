@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
 
 const App = () => {
-  const [pokemons, setPokemons]= useState([])
+  const [pokemons, setPokemons]= useState() // saw an array and figured it could mapp over  -.. so set empty
 
   const pokemonFetch = ()=> {
     // we can use full crud with this 
@@ -18,38 +18,24 @@ const App = () => {
     // how is pokemon fetch and pokemon  related ? 
   return (
     <div> 
-      <h1>
-        Pokemon
-      </h1>
+      <h1>Pokemon</h1>
       <button onClick={pokemonFetch}>Show Pokemon</button>
       <div>
         <table>
           <thead>
             <tr>
-              <th>
-                {/* pokemon image */}
-              </th>
-              <th>
-                pokemon name
-              </th>
-            </tr>
+
+              <th>pokemon names</th></tr>
           </thead>
           <tbody>
               {/*  iterate thru pokemon array to display names and images */}
-
-            {pokemons?  pokemons.map((pokemon, idx)=>  // can call elements whatever you want, use sngle to present elemnt 
-
-                        <tr key={idx}><td> {pokemon.name} </td></tr>
-
+            {pokemons? pokemons.map((pokemon, idx)=>  // can call elements whatever you want, use singluar to present element 
+              <tr key={idx}><td> {pokemon.name} </td></tr>
             ): <tr><td> loading</td></tr>}  
             {/*  not showing loading  */}
           </tbody>
-            {/* <td> {pokemon.sprites.front_default}</td> */}
         </table>
       </div>
-
-
-
     </div>
   )
 }
